@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(AtomicaTask VERSION 0.1 LANGUAGES CXX)
+project(AtomicaAI-Task VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -21,7 +21,7 @@ set(PROJECT_SOURCES
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(AtomicaTask
+    qt_add_executable(AtomicaAI-Task
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
@@ -31,24 +31,24 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(AtomicaTask SHARED
+        add_library(AtomicaAI-Task SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(AtomicaTask
+        add_executable(AtomicaAI-Task
           ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_compile_definitions(AtomicaTask
+target_compile_definitions(AtomicaAI-Task
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(AtomicaTask
+target_link_libraries(AtomicaAI-Task
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 
-set_target_properties(AtomicaTask PROPERTIES
+set_target_properties(AtomicaAI-Task PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -57,6 +57,6 @@ set_target_properties(AtomicaTask PROPERTIES
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_import_qml_plugins(AtomicaTask)
-    qt_finalize_executable(AtomicaTask)
+    qt_import_qml_plugins(AtomicaAI-Task)
+    qt_finalize_executable(AtomicaAI-Task)
 endif()
